@@ -33,26 +33,7 @@ defmodule AlogAdapter.Connection do
 
   @impl true
   def all(query) do
-    # IO.inspect(query, structs: false)
-    # query = from u in query, distinct: u.name
-    # query = from u in subquery(query), where: u.name == "1", select: u
-    # query = Map.put(query, :sources, {{"users", UsingAlogAdapter.User, nil}})
-    # query = Map.put(query, :select, %{
-    #       __struct__: Ecto.Query.SelectExpr,
-    #       expr: {:&, [], [0]},
-    #       fields: [
-    #         {{:., [], [{:&, [], [0]}, :id]}, [], []},
-    #         {{:., [], [{:&, [], [0]}, :email]}, [], []},
-    #         {{:., [], [{:&, [], [0]}, :name]}, [], []},
-    #         {{:., [], [{:&, [], [0]}, :inserted_at]}, [], []},
-    #         {{:., [], [{:&, [], [0]}, :updated_at]}, [], []}
-    #       ],
-    #       file: "/Users/robertfrancis/Code/spike/using_alog_adapter/deps/ecto/lib/ecto/query/planner.ex",
-    #       line: 755,
-    #       params: nil,
-    #       take: %{}
-    #     })
-    # |> IO.inspect(label: "-----> ")
+    query = from m in query, distinct: m.comment_id_no
     Ecto.Adapters.Postgres.Connection.all(query)
   end
 
