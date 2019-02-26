@@ -32,10 +32,7 @@ defmodule AlogAdapter.Connection do
   import Ecto.Query
 
   @impl true
-  def all(query) do
-    query = from m in query, distinct: m.comment_id_no
-    Ecto.Adapters.Postgres.Connection.all(query)
-  end
+  defdelegate all(query), to: PC
 
   @impl true
   defdelegate update_all(query, prefix \\ nil), to: PC
