@@ -35,4 +35,10 @@ defmodule AlogAdapter do
 
   @impl true
   defdelegate structure_load(default, config), to: Postgres
+
+  def execute(adapter_meta, query_meta, query, params, opts) do
+    {_cache_atom, _, {_id, query_str}} = query
+    
+    Ecto.Adapters.SQL.execute(adapter_meta, query_meta, query, params, opts)
+  end
 end
